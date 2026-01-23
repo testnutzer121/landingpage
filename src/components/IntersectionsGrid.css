@@ -1,0 +1,146 @@
+.intersections-grid-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  transition: opacity 0.3s ease-out;
+  will-change: opacity;
+}
+
+.intersections-grid {
+  display: grid;
+  grid-template-columns: 240px repeat(5, 240px); /* 3x sizes, removed studios columns */
+  gap: 0;
+  background-color: transparent;
+}
+
+.intersections-grid-header {
+  display: contents;
+}
+
+.intersections-grid-row {
+  display: contents;
+}
+
+.intersections-grid-cell {
+  width: 240px; /* 3x 80px */
+  height: 240px; /* 3x 80px */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 18px 18px 18px 24px; /* 3x padding */
+  cursor: crosshair;
+  transition: background-color 0.2s;
+}
+
+.intersections-header-cell {
+  background-color: rgb(41, 41, 41);
+  color: #A8A8A8;
+  font-size: 17px;
+  font-weight: normal;
+}
+
+.intersections-data-cell {
+  background-color: #212121;
+  color: #595959;
+  margin: 18px 0; /* 3x 6px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.intersections-data-cell:hover {
+  background-color: #2a2a2a;
+}
+
+.intersections-data-cell.has-intersection {
+  color: #595959;
+}
+
+.intersections-data-cell.arc-studio-match {
+  color: #595959;
+}
+
+.intersections-lab-header,
+.intersections-arc-header {
+  text-align: left;
+}
+
+.intersections-studios-header {
+  text-align: center;
+  align-items: center;
+}
+
+.intersections-studio-header {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.intersections-cell-abbrev {
+  font-size: 51px; /* 3x 17px */
+  font-weight: normal;
+  line-height: 1;
+}
+
+.intersections-cell-name {
+  font-size: 36px; /* 3x 12px */
+  font-weight: normal;
+  line-height: 1.25;
+  max-width: 180px; /* 3x 60px */
+  margin-top: 12px; /* 3x 4px */
+}
+
+.intersections-cell-label {
+  font-size: 51px; /* 3x 17px */
+  font-weight: normal;
+  color: #A8A8A8;
+}
+
+.intersection-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.intersection-project {
+  font-size: 30px; /* 3x 10px */
+  font-weight: normal;
+  margin-bottom: 12px; /* 3x 4px */
+  color: #A8A8A8;
+}
+
+.intersection-label {
+  font-size: 36px; /* 3x 12px */
+  font-weight: normal;
+  line-height: 1.25;
+  color: #595959;
+}
+
+.intersection-label sup {
+  font-size: 19.8px; /* 3x 6.6px */
+  vertical-align: super;
+}
+
+@media (max-width: 768px) {
+  .intersections-grid {
+    grid-template-columns: 60px repeat(5, 60px) 60px repeat(2, 60px);
+  }
+  
+  .intersections-grid-cell {
+    width: 60px;
+    height: 60px;
+    font-size: 12px;
+  }
+  
+  .intersections-cell-name {
+    font-size: 10px;
+  }
+}

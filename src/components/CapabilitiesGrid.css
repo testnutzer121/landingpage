@@ -1,0 +1,121 @@
+.capabilities-grid-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  transition: opacity 0.3s ease-out;
+  will-change: opacity;
+  padding: 2rem;
+}
+
+.capabilities-grid-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.capabilities-title {
+  font-size: 17px;
+  font-weight: normal;
+  color: #A8A8A8;
+  margin: 0;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 109px);
+  gap: 0;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+.capabilities-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.capabilities-studio-header {
+  height: 80px;
+  width: 109px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px;
+  cursor: crosshair;
+  transition: opacity 0.2s;
+}
+
+.capabilities-studio-header:hover {
+  opacity: 0.9;
+}
+
+.capabilities-studio-letter {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.capabilities-studio-name {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.capabilities-block {
+  height: 80px;
+  width: 109px;
+  border: 1px solid;
+  background-color: #212121;
+  padding: 8px;
+  margin: 6px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: crosshair;
+  transition: background-color 0.2s;
+}
+
+.capabilities-block:hover {
+  background-color: #353535;
+}
+
+.capabilities-block-id {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.capabilities-block-description {
+  font-size: 8px;
+  font-weight: normal;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.capabilities-block-empty {
+  height: 80px;
+  width: 109px;
+  border: 1px solid #1A1919;
+  background-color: #1A1919;
+  margin: 6px 0;
+}
+
+@media (max-width: 768px) {
+  .capabilities-grid-container {
+    padding: 1rem;
+  }
+  
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-left: 0;
+  }
+  
+  .capabilities-studio-header,
+  .capabilities-block,
+  .capabilities-block-empty {
+    width: 100%;
+  }
+}

@@ -1,0 +1,238 @@
+.tile-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.tile-modal-content {
+  background-color: #212121;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 0;
+  max-width: 900px;
+  width: 90%;
+  max-height: 80vh;
+  overflow: hidden;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+  color: #A8A8A8;
+  display: flex;
+  flex-direction: row;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.tile-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #A8A8A8;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+  z-index: 10;
+}
+
+.tile-modal-close:hover {
+  color: #fff;
+}
+
+.tile-modal-left-panel {
+  background-color: #1a1a1a;
+  padding: 2rem;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #333;
+}
+
+.tile-modal-right-panel {
+  background-color: #212121;
+  padding: 2rem;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.tile-modal-logo-section {
+  margin-bottom: 2rem;
+}
+
+.tile-modal-logo-placeholder {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #8B4513 0%, #D3D3D3 50%, #F5F5DC 100%);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tile-modal-logo-placeholder::before,
+.tile-modal-logo-placeholder::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: inherit;
+}
+
+.tile-modal-logo-placeholder::before {
+  transform: translate(2px, 2px);
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.tile-modal-logo-placeholder::after {
+  transform: translate(4px, 4px);
+  z-index: -2;
+  opacity: 0.5;
+}
+
+.tile-modal-title-left {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0;
+  font-weight: 500;
+}
+
+.tile-modal-links-section {
+  margin-top: auto;
+}
+
+.tile-modal-links-heading {
+  font-size: 0.875rem;
+  color: #A8A8A8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.tile-modal-link-item {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+}
+
+.tile-modal-link-item:hover {
+  color: #4CA866;
+}
+
+.tile-modal-title-right {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.tile-modal-abbreviation {
+  display: inline-block;
+  background-color: #333;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #A8A8A8;
+}
+
+.tile-modal-info {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: #1a1a1a;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.tile-modal-description {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: #A8A8A8;
+  font-size: 1rem;
+  white-space: pre-line;
+}
+
+.tile-modal-description p {
+  margin: 0;
+}
+
+.tile-modal-related {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333;
+}
+
+.tile-modal-related h3 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.tile-modal-related ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tile-modal-related li {
+  padding: 0.5rem 0;
+  color: #A8A8A8;
+}
+
+.tile-modal-link {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333;
+}
+
+.tile-modal-link-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #4CA866;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.tile-modal-link-button:hover {
+  background-color: #3d8a52;
+}

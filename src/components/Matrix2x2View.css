@@ -1,0 +1,116 @@
+.matrix-2x2-view {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #111112;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.matrix-2x2-view-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex: 1;
+  align-items: center;
+}
+
+.matrix-2x2-text-panel {
+  padding: 2rem;
+}
+
+.matrix-2x2-text-title {
+  font-size: 2.5rem;
+  color: #A8A8A8;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.matrix-2x2-text-description {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #A8A8A8;
+  margin-bottom: 2rem;
+}
+
+.matrix-2x2-selected-info {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #212121;
+  border-left: 3px solid #4CA866;
+  border-radius: 4px;
+}
+
+.matrix-2x2-selected-title {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.matrix-2x2-selected-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #A8A8A8;
+}
+
+.matrix-2x2-matrix-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.matrix-2x2-navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 2rem;
+}
+
+.matrix-2x2-next-button {
+  padding: 1rem 2rem;
+  background-color: #4CA866;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.matrix-2x2-next-button:hover {
+  background-color: #3d8a52;
+}
+
+@media (max-width: 1024px) {
+  .matrix-2x2-view-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .matrix-2x2-text-panel {
+    order: 1;
+  }
+  
+  .matrix-2x2-matrix-panel {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .matrix-2x2-view {
+    padding: 2rem 1rem;
+  }
+  
+  .matrix-2x2-text-title {
+    font-size: 2rem;
+  }
+  
+  .matrix-2x2-text-description {
+    font-size: 1rem;
+  }
+}

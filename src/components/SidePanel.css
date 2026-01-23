@@ -1,0 +1,49 @@
+.side-panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 400px;
+  max-width: 30vw;
+  padding: 2rem;
+  z-index: 10;
+  pointer-events: none;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.side-panel-content {
+  transition: opacity 0.3s ease-out;
+}
+
+.side-panel-next {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+.side-panel-title {
+  font-size: 1.5rem;
+  color: #A8A8A8;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.side-panel-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #A8A8A8;
+  max-width: 380px;
+}
+
+@media (max-width: 768px) {
+  .side-panel {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+  }
+  
+  .side-panel-description {
+    max-width: 100%;
+  }
+}
