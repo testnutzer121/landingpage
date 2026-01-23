@@ -34,10 +34,6 @@ const MatrixSection = () => {
 
   return (
     <div className="matrix-section">
-      <div className="matrix-section-header">
-        <h1 className="matrix-section-title">How do we structure our response? ↓</h1>
-      </div>
-      
       <div className="matrix-section-container" ref={containerRef}>
         <div className="matrix-section-content">
           {/* Side Panel */}

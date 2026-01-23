@@ -47,13 +47,6 @@ const LandingPage = () => {
           <p className="hero-description">
             Our ultimate mission is to create a world of human flourishing. Therefore, we think and create through our labs to achieve our arcs.
           </p>
-          <button 
-            className="scroll-indicator"
-            onClick={() => scrollToSection(matrixRef)}
-            aria-label="Scroll to next section"
-          >
-            ↓
-          </button>
         </div>
       </section>
 

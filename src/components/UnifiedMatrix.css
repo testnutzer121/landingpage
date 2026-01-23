@@ -9,6 +9,10 @@
   background-color: #111112;
 }
 
+.unified-matrix-container > .unified-matrix-table {
+  margin: 0 auto;
+}
+
 .view-mode-toggle {
   display: flex;
   gap: 1rem;
@@ -45,6 +49,7 @@
   max-width: 1400px;
   border: 1px solid #333;
   background-color: #1a1a1a;
+  margin: 0 auto;
 }
 
 .matrix-header-row-1,
@@ -248,7 +253,7 @@
 @media (max-width: 1200px) {
   .matrix-header-row-1,
   .matrix-header-row-2 {
-    grid-template-columns: 150px 120px 120px 120px 120px 120px;
+    grid-template-columns: 150px 120px 120px 120px 120px 120px 120px;
   }
 
   .matrix-data-row {
@@ -277,7 +282,7 @@
 
   .matrix-header-row-1,
   .matrix-header-row-2 {
-    grid-template-columns: 100px 80px 80px 80px 80px 80px;
+    grid-template-columns: 100px 80px 80px 80px 80px 80px 80px;
     font-size: 0.8rem;
   }
 

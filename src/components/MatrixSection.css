@@ -22,12 +22,18 @@
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .matrix-section-content {
   position: relative;
   width: 100%;
   min-height: 300vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   padding: 2rem;
 }
 
