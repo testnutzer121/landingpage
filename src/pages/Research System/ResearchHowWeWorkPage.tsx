@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { 
   Users, 
@@ -368,18 +369,18 @@ const ResearchHowWeWorkPage = () => {
               Discover our latest research findings and publications, or join our research community to contribute.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/resources/research"
+              <Link
+                to="/research"
                 className="btn-primary"
               >
                 View Research
-              </a>
-              <a
-                href="/resources/research/publications"
+              </Link>
+              <Link
+                to="/resources/research/publications"
                 className="btn-secondary"
               >
                 Browse Publications
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

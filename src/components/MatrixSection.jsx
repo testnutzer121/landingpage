@@ -1,15 +1,15 @@
-import { useState, useRef } from 'react'
-import { useScrollProgress } from '../hooks/useScrollProgress'
+import { useState } from 'react'
+import { guidedTourSections } from '../data/matrixData'
 import UnifiedMatrix from './UnifiedMatrix'
 import SidePanel from './SidePanel'
 import TileModal from './TileModal'
 import './MatrixSection.css'
 
 const MatrixSection = () => {
-  const [showDetailedMatrix, setShowDetailedMatrix] = useState(false)
-  const containerRef = useRef(null)
-  const { progress, currentState, stateProgress } = useScrollProgress(containerRef)
+  const [showMatrixIntro, setShowMatrixIntro] = useState(true)
+  const [currentState, setCurrentState] = useState(0)
   const [selectedTile, setSelectedTile] = useState(null)
+  const [tourClosed, setTourClosed] = useState(false)
 
   const handleTileClick = (tileData) => {
     setSelectedTile(tileData)
@@ -19,42 +19,49 @@ const MatrixSection = () => {
     setSelectedTile(null)
   }
 
-  // Calculate scroll progress for Matrix3D (fades out in state 1)
-  const matrix3DProgress = currentState === 0 
-    ? stateProgress 
-    : currentState > 0 
-      ? 1 
-      : 0
+  const handleContinue = () => {
+    if (showMatrixIntro) {
+      setShowMatrixIntro(false)
+      setCurrentState(0)
+      return
+    }
+    if (currentState < guidedTourSections.length - 1) {
+      setCurrentState(currentState + 1)
+    }
+  }
 
-  // Calculate scroll progress for IntersectionsGrid (visible in state 1)
-  const intersectionsProgress = progress
+  const handleCloseTour = () => {
+    setTourClosed(true)
+  }
 
-  // Calculate scroll progress for CapabilitiesGrid (visible in state 2)
-  const capabilitiesProgress = progress
+  const highlightMode = showMatrixIntro || tourClosed ? null : (guidedTourSections[currentState]?.id || null)
 
   return (
     <div className="matrix-section">
-      <div className="matrix-section-container" ref={containerRef}>
-        <div className="matrix-section-content">
-          {/* Side Panel */}
-          <SidePanel 
-            currentState={currentState} 
-            stateProgress={stateProgress}
-          />
+      <div className="matrix-section-content">
+        {/* Side Panel - Left */}
+        <SidePanel
+          showMatrixIntro={showMatrixIntro}
+          currentState={currentState}
+          tourClosed={tourClosed}
+          onContinue={handleContinue}
+          onCloseTour={handleCloseTour}
+        />
 
-          {/* Matrix Visualization Area */}
-          <div className="matrix-visualization-area">
-            <div className="matrix-visualization-wrapper">
-              {/* Unified Matrix */}
-              <UnifiedMatrix onTileClick={handleTileClick} />
-            </div>
+        {/* Matrix Visualization - Right */}
+        <div className="matrix-visualization-area">
+          <div className="matrix-visualization-wrapper">
+            <UnifiedMatrix
+              onTileClick={handleTileClick}
+              highlightMode={highlightMode}
+            />
           </div>
         </div>
       </div>
 
       {/* Modal */}
       {selectedTile && (
-        <TileModal 
+        <TileModal
           tileData={selectedTile}
           onClose={handleCloseModal}
         />

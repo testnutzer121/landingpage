@@ -1,0 +1,157 @@
+.arcs-labs-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #111112;
+}
+
+.arcs-labs-container > .arcs-labs-table {
+  margin: 0 auto;
+}
+
+.arcs-labs-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1400px;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
+  margin: 0 auto;
+}
+
+.arcs-labs-header-row,
+.arcs-labs-data-row {
+  display: grid;
+  grid-template-columns: 250px 150px 150px 150px 150px 150px;
+  gap: 2px;
+}
+
+.arcs-labs-cell {
+  border: 1px solid #333;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  background-color: #212121;
+  color: #A8A8A8;
+  transition: all 0.2s;
+  min-height: 120px;
+}
+
+.arcs-labs-header-cell {
+  background-color: rgb(41, 41, 41);
+  color: #A8A8A8;
+  font-weight: 500;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  min-height: auto;
+}
+
+.arcs-labs-corner-header {
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.arcs-labs-lab-header {
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+}
+
+.arcs-labs-lab-header:hover {
+  background-color: #2a2a2a;
+}
+
+.arcs-labs-think-header {
+  background-color: rgba(41, 41, 41, 0.8);
+}
+
+.arcs-labs-create-header {
+  background-color: rgba(41, 41, 41, 0.8);
+}
+
+.arcs-labs-arc-cell {
+  background-color: rgb(41, 41, 41);
+  font-weight: 400;
+  cursor: pointer;
+  min-height: auto;
+  align-items: flex-start;
+  padding: 0.75rem 1rem;
+  white-space: normal;
+  word-wrap: break-word;
+  font-size: 0.9rem;
+}
+
+.arcs-labs-arc-cell:hover {
+  background-color: #2a2a2a;
+}
+
+.arcs-labs-data-cell {
+  background-color: #212121;
+  min-height: auto;
+  align-items: flex-start;
+  padding: 0.75rem 1rem;
+  position: relative;
+  height: 100%;
+}
+
+.arcs-labs-think-cell {
+  background-color: rgba(33, 33, 33, 0.6);
+}
+
+.arcs-labs-create-cell {
+  background-color: rgba(33, 33, 33, 0.6);
+}
+
+.arcs-labs-cell-content {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #A8A8A8;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.arcs-labs-cell-content:hover {
+  background-color: rgba(76, 168, 102, 0.2);
+  color: #fff;
+}
+
+@media (max-width: 1200px) {
+  .arcs-labs-header-row,
+  .arcs-labs-data-row {
+    grid-template-columns: 200px 120px 120px 120px 120px 120px;
+  }
+
+  .arcs-labs-cell {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .arcs-labs-container {
+    padding: 1rem;
+  }
+
+  .arcs-labs-header-row,
+  .arcs-labs-data-row {
+    grid-template-columns: 150px 100px 100px 100px 100px 100px;
+    font-size: 0.8rem;
+  }
+
+  .arcs-labs-cell {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    min-height: 100px;
+  }
+}

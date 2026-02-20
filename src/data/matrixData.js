@@ -109,7 +109,8 @@ export const labs = [
     name: 'SIE — System Innovation Engine',
     abbreviation: 'SIE',
     description: 'Combination of multiple ecosystems plugged into the problem-solving engine. Rotating system for detecting problems + resources at scale.',
-    overcategory: 'Execution'
+    overcategory: 'Execution',
+    link: '/system-innovation-engine'
   }
 ]
 
@@ -158,27 +159,44 @@ export const getProjectById = (id) => projects.find(p => p.id === id)
 export const getArcsByStudio = (studioId) => arcs.filter(a => a.studioId === studioId)
 export const getLabsByOvercategory = (overcategory) => labs.filter(l => l.overcategory === overcategory)
 
-// Explanatory text content
+// Guided tour sections for scroll-based matrix walkthrough
+export const guidedTourSections = [
+  {
+    id: 'stages',
+    title: 'Stages',
+    description: 'Our work is structured into two fundamental stages: Think and Create. Every act of creation at Humansys is grounded in rigorous research and analysis. The Think stage drives theoretical solutionism and deep problem understanding, while the Create stage turns those research-backed insights into tangible execution.'
+  },
+  {
+    id: 'categories',
+    title: 'Categories',
+    description: 'These are the three core fields in which Humansys is active — our directional north stars. Human Flourishing focuses on unlocking individual potential and well-being. Systemic Infrastructure builds the foundational systems that enable innovation at scale. Innovation drives the creation of new ventures and mainstream access to entrepreneurship.'
+  },
+  {
+    id: 'arcs',
+    title: 'ARCs',
+    description: 'ARCs are our mission statements and impact goals, derived from the categories we operate in. Each ARC defines a directional ambition — from scaling individual capability to digitalizing startup ecosystems. They are living goals: continuously iterated, updated, and refined as our understanding deepens and our ecosystem grows.'
+  },
+  {
+    id: 'labs',
+    title: 'Labs',
+    description: 'Labs are our in-house organizations that operate on the mission statements defined by the ARCs. Each Lab brings specialized expertise — from deep research and imagination to venture building and ecosystem services. They are deeply intertwined, collaborating across boundaries to deliver compound impact.'
+  },
+  {
+    id: 'projects',
+    title: 'Projects',
+    description: 'This is the map of existing initiatives and projects operating under Humansys. Each cell represents a specific initiative at the intersection of an ARC\'s mission and a Lab\'s expertise — the tangible output of our Think and Create process.'
+  }
+]
+
+// Explanatory text content (legacy)
 export const textContent = {
   matrix: {
     title: 'Matrix',
     description: 'Our collaborative approach is firmly grounded in the complex, messy reality of our existing socio-economic systems. Step-by-step, with the support of a growing ecosystem, we aim to build tangible pathways towards the options that we would like to manifest in the world. We have visualised our organisation\'s response strategy across a three-dimensional matrix. The Matrix represents the dynamic interplay of our systemic goals, collaborations and context specific initiatives.'
   },
-  labs: {
-    title: 'Labs',
-    description: 'Each of our Labs is focused on a specific area of the socio-economic system and the everyday codes (e.g. norms, behaviours and institutional logic) that form its structural backbone. The Labs are exploring what might be possible, both within and beyond the current structures, and working to develop technical expertise in those areas.'
-  },
-  arcs: {
-    title: 'ARCs',
-    description: 'Our ARC workflows are designed with clear, directional goals that guide our efforts toward impactful outcomes. These ARCs often involve collaboration with multiple Labs, integrating their technical expertise with tangible, real-world contexts.'
-  },
-  studios: {
-    title: 'Studios',
-    description: 'Studios are the connective tissue that support both the Labs and Missions. The studios explore themes that help our work to be implemented and more widely understood.'
-  },
   intersections: {
     title: 'Intersections',
-    description: 'Each project in our portfolio contributes to a number of systemic capabilities. In doing so they intersect with the Labs, ARCs and Studios in various configurations. This allows us to prioritise flexible, compound learning across our internal and external ecosystems. Some projects are not part of an ARC, but each is attached to a Lab (or multiple Labs) where they contribute to building systemic capabilities.'
+    description: 'Each project in our portfolio contributes to a number of systemic capabilities. In doing so they intersect with the Labs, ARCs and Studios in various configurations.'
   },
   capabilities: {
     title: 'Capabilities',
@@ -193,6 +211,7 @@ export default {
   projects,
   intersections,
   textContent,
+  guidedTourSections,
   getArcById,
   getLabById,
   getStudioById,

@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import './UnifiedMatrix.css'
 
-const UnifiedMatrix = ({ onTileClick }) => {
-  const [viewMode, setViewMode] = useState('projects') // 'categories', 'arcs', 'projects'
+const UnifiedMatrix = ({ onTileClick, highlightMode }) => {
 
-  // Matrix structure based on the image
+  // Matrix structure
   const matrixData = [
     {
       category: 'HF',
@@ -15,12 +13,12 @@ const UnifiedMatrix = ({ onTileClick }) => {
           arcId: 'ARGAGE',
           think: {
             IMG: 'Argumentation Age',
-            RI: { text: 'Life OS', link: 'https://vision-one.notion.site/Systematic-Venture-Building-Applied-on-HumanPotencial-Tech-2ebdcae724f0801d9388e558c8deb0c5?pvs=74' }
+            RI: { text: 'Life OS', link: 'https://venturebuilder.humansys.xyz/' }
           },
           create: {
-            VB: '',
+            VB: { text: 'Journex, Journeybook, Sciencefit', link: 'https://pipeline.humansys.xyz/' },
             EaaS: '',
-            SIE: { text: 'Journex, Journeybook, Sciencefit', link: 'https://quick-website-replic-344q.bolt.host/' }
+            SIE: ''
           }
         },
         {
@@ -28,7 +26,7 @@ const UnifiedMatrix = ({ onTileClick }) => {
           arcId: '10X',
           think: {
             IMG: { text: 'Foundational Paper', link: 'https://ornate-sopapillas-9d5894.netlify.app/papers/foundational-papers/Foundational%20Paper-%2001v2.pdf' },
-            RI: { text: 'Articels', link: 'https://project-change-log-t-fxu5.bolt.host/problemspace' }
+            RI: { text: 'Articels', link: 'https://humansys.substack.com/t/debate' }
           },
           create: {
             VB: '',
@@ -50,7 +48,7 @@ const UnifiedMatrix = ({ onTileClick }) => {
             RI: { text: 'Field Map', link: 'https://interactive-hfpi-fie-vdip.bolt.host/' }
           },
           create: {
-            VB: { text: 'Meta Institute', link: 'https://dynamic-bonbon-f19224.netlify.app/view/62019d85-dc44-487b-840a-6e676c20509e' },
+            VB: { text: 'Meta Institute', link: 'https://venturebuilder.humansys.xyz/' },
             EaaS: '',
             SIE: ''
           }
@@ -104,45 +102,23 @@ const UnifiedMatrix = ({ onTileClick }) => {
     }
   ]
 
-  const labs = [
-    { id: 'IMG', name: 'Imaginers', type: 'think' },
-    { id: 'RI', name: 'Research Institute', type: 'think' },
-    { id: 'VB', name: 'Venture Builder', type: 'create' },
-    { id: 'EaaS', name: 'Ecosystem as a Service', type: 'create' },
-    { id: 'SIE', name: 'System Innovation Engine', type: 'create' }
-  ]
+  const renderCellContent = (content, categoryName, arcName, labId) => {
+    if (!content) return null
 
-  const renderCellContent = (content, category, arcName, labId) => {
-    if (!content) {
-      return null
-    }
-
-    // Handle both string and object format
     const contentText = typeof content === 'string' ? content : content.text
     const contentLink = typeof content === 'object' ? content.link : null
 
-    if (!contentText || contentText.trim() === '') {
-      return null
-    }
+    if (!contentText || contentText.trim() === '') return null
 
-    if (viewMode === 'categories') {
-      return null // Don't show content in categories mode
-    }
-
-    if (viewMode === 'arcs') {
-      return null // Don't show content in arcs mode
-    }
-
-    // Projects mode - show the content
     return (
-      <div 
+      <div
         className="matrix-cell-content"
         onClick={(e) => {
           e.stopPropagation()
           if (onTileClick) {
             onTileClick({
               type: 'project',
-              category,
+              categoryName,
               arcName,
               labId,
               content: contentText,
@@ -158,39 +134,30 @@ const UnifiedMatrix = ({ onTileClick }) => {
   }
 
   return (
-    <div className="unified-matrix-container" data-view={viewMode}>
-      {/* Matrix Table */}
+    <div className="unified-matrix-container" data-highlight={highlightMode || 'none'}>
       <div className="unified-matrix-table">
-        {/* Header Row 1 */}
+        {/* Header Row 1: Categories/Stages + Think + Create */}
         <div className="matrix-header-row-1">
           <div className="matrix-cell matrix-header-cell matrix-corner-header">
-            Category/Stage
+            Categories / Stages
           </div>
           <div className="matrix-cell matrix-header-cell matrix-empty-header"></div>
-          <div 
-            className="matrix-cell matrix-header-cell matrix-think-header" 
-            colSpan={2}
+          <div
+            className={`matrix-cell matrix-header-cell matrix-stage-header ${highlightMode === 'stages' ? 'highlight-orange' : ''}`}
             onClick={() => {
               if (onTileClick) {
-                onTileClick({
-                  type: 'stage',
-                  stage: 'think'
-                })
+                onTileClick({ type: 'stage', stage: 'think' })
               }
             }}
             style={{ cursor: 'pointer' }}
           >
             Think
           </div>
-          <div 
-            className="matrix-cell matrix-header-cell matrix-create-header" 
-            colSpan={3}
+          <div
+            className={`matrix-cell matrix-header-cell matrix-stage-header ${highlightMode === 'stages' ? 'highlight-orange' : ''}`}
             onClick={() => {
               if (onTileClick) {
-                onTileClick({
-                  type: 'stage',
-                  stage: 'create'
-                })
+                onTileClick({ type: 'stage', stage: 'create' })
               }
             }}
             style={{ cursor: 'pointer' }}
@@ -199,119 +166,85 @@ const UnifiedMatrix = ({ onTileClick }) => {
           </div>
         </div>
 
-        {/* Header Row 2 */}
+        {/* Header Row 2: Arcs/Labs + 5 lab names */}
         <div className="matrix-header-row-2">
           <div className="matrix-cell matrix-header-cell matrix-empty-header"></div>
-          <div 
-            className="matrix-cell matrix-header-cell matrix-corner-header"
-            onClick={() => {
-              if (onTileClick) {
-                onTileClick({
-                  type: 'arcs-labs',
-                  title: 'Arcs/Labs'
-                })
-              }
-            }}
-            style={{ cursor: 'pointer' }}
-          >
-            Arcs/Labs
+          <div className="matrix-cell matrix-header-cell matrix-corner-header">
+            Arcs / Labs
           </div>
-          <div 
-            className="matrix-cell matrix-header-cell matrix-lab-header"
+          <div
+            className={`matrix-cell matrix-header-cell matrix-lab-header ${highlightMode === 'labs' ? 'highlight-orange' : ''}`}
             onClick={() => {
               if (onTileClick) {
-                onTileClick({
-                  type: 'lab',
-                  id: 'IMG',
-                  hasLink: true,
-                  link: 'https://ornate-sopapillas-9d5894.netlify.app/'
-                })
+                onTileClick({ type: 'lab', id: 'IMG', hasLink: true, link: 'https://ornate-sopapillas-9d5894.netlify.app/' })
               }
             }}
             style={{ cursor: 'pointer' }}
           >
             Imaginers
           </div>
-          <div 
-            className="matrix-cell matrix-header-cell matrix-lab-header"
+          <div
+            className={`matrix-cell matrix-header-cell matrix-lab-header ${highlightMode === 'labs' ? 'highlight-orange' : ''}`}
             onClick={() => {
               if (onTileClick) {
-                onTileClick({
-                  type: 'lab',
-                  id: 'RI',
-                  hasLink: true,
-                  link: 'https://project-change-log-t-fxu5.bolt.host/framework'
-                })
+                onTileClick({ type: 'lab', id: 'RI', hasLink: true, link: 'https://humansys.substack.com/' })
               }
             }}
             style={{ cursor: 'pointer' }}
           >
             Research Institute
           </div>
-          <div 
-            className="matrix-cell matrix-header-cell matrix-lab-header"
+          <div
+            className={`matrix-cell matrix-header-cell matrix-lab-header ${highlightMode === 'labs' ? 'highlight-orange' : ''}`}
             onClick={() => {
               if (onTileClick) {
-                onTileClick({
-                  type: 'lab',
-                  id: 'VB',
-                  hasLink: true,
-                  link: 'https://dynamic-bonbon-f19224.netlify.app/'
-                })
+                onTileClick({ type: 'lab', id: 'VB', hasLink: true, link: 'https://venturebuilder.humansys.xyz/' })
               }
             }}
             style={{ cursor: 'pointer' }}
           >
             Venture Builder
           </div>
-          <div 
-            className="matrix-cell matrix-header-cell matrix-lab-header"
+          <div
+            className={`matrix-cell matrix-header-cell matrix-lab-header ${highlightMode === 'labs' ? 'highlight-orange' : ''}`}
             onClick={() => {
               if (onTileClick) {
-                onTileClick({
-                  type: 'lab',
-                  id: 'EaaS',
-                  hasLink: true,
-                  link: '/ecosystem-as-service'
-                })
+                onTileClick({ type: 'lab', id: 'EaaS', hasLink: true, link: '/ecosystem-as-service' })
               }
             }}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', position: 'relative' }}
           >
             Ecosystem as a Service
+            <span className="lab-year-badge">2027</span>
           </div>
-          <div 
-            className="matrix-cell matrix-header-cell matrix-lab-header"
+          <div
+            className={`matrix-cell matrix-header-cell matrix-lab-header ${highlightMode === 'labs' ? 'highlight-orange' : ''}`}
             onClick={() => {
               if (onTileClick) {
-                onTileClick({
-                  type: 'lab',
-                  id: 'SIE',
-                  hasLink: false
-                })
+                onTileClick({ type: 'lab', id: 'SIE', hasLink: true, link: '/system-innovation-engine' })
               }
             }}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', position: 'relative' }}
           >
             System Innovation Engine
+            <span className="lab-year-badge">2028</span>
           </div>
         </div>
 
         {/* Data Rows */}
-        {matrixData.map((categoryData, categoryIndex) => (
-          <div 
-            key={`category-${categoryData.category}`} 
+        {matrixData.map((categoryData) => (
+          <div
+            key={`category-${categoryData.category}`}
             className="matrix-category-group"
           >
             {categoryData.arcs.map((arc, arcIndex) => {
               const isFirstArcInCategory = arcIndex === 0
-              
               return (
                 <div key={`${categoryData.category}-${arcIndex}`} className="matrix-data-row">
-                  {/* Category/Stage Cell - only on first row of category */}
+                  {/* Category Cell */}
                   {isFirstArcInCategory && (
-                    <div 
-                      className={`matrix-cell matrix-category-cell ${viewMode === 'categories' ? 'highlighted' : ''}`}
+                    <div
+                      className={`matrix-cell matrix-category-cell ${highlightMode === 'categories' ? 'highlight-orange' : ''}`}
                       onClick={() => {
                         if (onTileClick) {
                           onTileClick({
@@ -326,10 +259,10 @@ const UnifiedMatrix = ({ onTileClick }) => {
                     </div>
                   )}
                   {!isFirstArcInCategory && <div className="matrix-cell matrix-empty-cell"></div>}
-                  
-                  {/* Arcs/Labs Cell - arc name goes here (directly under empty header column) */}
-                  <div 
-                    className={`matrix-cell matrix-arc-cell ${viewMode === 'arcs' ? 'highlighted' : ''}`}
+
+                  {/* Arc Cell — name + tagline */}
+                  <div
+                    className={`matrix-cell matrix-arc-cell ${highlightMode === 'arcs' ? 'highlight-orange' : ''}`}
                     onClick={() => {
                       if (onTileClick) {
                         onTileClick({
@@ -342,108 +275,73 @@ const UnifiedMatrix = ({ onTileClick }) => {
                     }}
                     style={{ cursor: 'pointer' }}
                   >
-                    {viewMode === 'arcs' || viewMode === 'projects' ? arc.arcName : ''}
+                    {arc.arcName}
                   </div>
 
-                {/* Think Cells */}
-                <div 
-                  className="matrix-cell matrix-data-cell matrix-think-cell"
-                  onClick={(e) => {
-                    // Check if click is on empty cell (not on project content)
-                    const hasContent = arc.think.IMG && (typeof arc.think.IMG === 'string' ? arc.think.IMG.trim() !== '' : arc.think.IMG.text && arc.think.IMG.text.trim() !== '')
-                    if (!hasContent) {
-                      if (onTileClick) {
-                        onTileClick({
-                          type: 'lab',
-                          id: 'IMG',
-                          hasLink: true,
-                          link: 'https://ornate-sopapillas-9d5894.netlify.app/'
-                        })
+                  {/* Think Cells */}
+                  <div
+                    className={`matrix-cell matrix-data-cell matrix-think-cell ${highlightMode === 'projects' ? 'highlight-orange' : ''}`}
+                    onClick={() => {
+                      const hasContent = arc.think.IMG && (typeof arc.think.IMG === 'string' ? arc.think.IMG.trim() !== '' : arc.think.IMG.text && arc.think.IMG.text.trim() !== '')
+                      if (!hasContent && onTileClick) {
+                        onTileClick({ type: 'lab', id: 'IMG', hasLink: true, link: 'https://ornate-sopapillas-9d5894.netlify.app/' })
                       }
-                    }
-                  }}
-                  style={{ cursor: 'pointer' }}
-                >
-                  {renderCellContent(arc.think.IMG, categoryData.category, arc.arcName, 'IMG')}
-                </div>
-                <div 
-                  className="matrix-cell matrix-data-cell matrix-think-cell"
-                  onClick={(e) => {
-                    const hasContent = arc.think.RI && (typeof arc.think.RI === 'string' ? arc.think.RI.trim() !== '' : arc.think.RI.text && arc.think.RI.text.trim() !== '')
-                    if (!hasContent) {
-                      if (onTileClick) {
-                        onTileClick({
-                          type: 'lab',
-                          id: 'RI',
-                          hasLink: true,
-                          link: 'https://project-change-log-t-fxu5.bolt.host/framework'
-                        })
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {renderCellContent(arc.think.IMG, categoryData.categoryName, arc.arcName, 'IMG')}
+                  </div>
+                  <div
+                    className={`matrix-cell matrix-data-cell matrix-think-cell ${highlightMode === 'projects' ? 'highlight-orange' : ''}`}
+                    onClick={() => {
+                      const hasContent = arc.think.RI && (typeof arc.think.RI === 'string' ? arc.think.RI.trim() !== '' : arc.think.RI.text && arc.think.RI.text.trim() !== '')
+                      if (!hasContent && onTileClick) {
+                        onTileClick({ type: 'lab', id: 'RI', hasLink: true, link: 'https://humansys.substack.com/' })
                       }
-                    }
-                  }}
-                  style={{ cursor: 'pointer' }}
-                >
-                  {renderCellContent(arc.think.RI, categoryData.category, arc.arcName, 'RI')}
-                </div>
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {renderCellContent(arc.think.RI, categoryData.categoryName, arc.arcName, 'RI')}
+                  </div>
 
-                {/* Create Cells */}
-                <div 
-                  className="matrix-cell matrix-data-cell matrix-create-cell"
-                  onClick={(e) => {
-                    const hasContent = arc.create.VB && (typeof arc.create.VB === 'string' ? arc.create.VB.trim() !== '' : arc.create.VB.text && arc.create.VB.text.trim() !== '')
-                    if (!hasContent) {
-                      if (onTileClick) {
-                        onTileClick({
-                          type: 'lab',
-                          id: 'VB',
-                          hasLink: true,
-                          link: 'https://dynamic-bonbon-f19224.netlify.app/'
-                        })
+                  {/* Create Cells */}
+                  <div
+                    className={`matrix-cell matrix-data-cell matrix-create-cell ${highlightMode === 'projects' ? 'highlight-orange' : ''}`}
+                    onClick={() => {
+                      const hasContent = arc.create.VB && (typeof arc.create.VB === 'string' ? arc.create.VB.trim() !== '' : arc.create.VB.text && arc.create.VB.text.trim() !== '')
+                      if (!hasContent && onTileClick) {
+                        onTileClick({ type: 'lab', id: 'VB', hasLink: true, link: 'https://venturebuilder.humansys.xyz/' })
                       }
-                    }
-                  }}
-                  style={{ cursor: 'pointer' }}
-                >
-                  {renderCellContent(arc.create.VB, categoryData.category, arc.arcName, 'VB')}
-                </div>
-                <div 
-                  className="matrix-cell matrix-data-cell matrix-create-cell"
-                  onClick={(e) => {
-                    const hasContent = arc.create.EaaS && (typeof arc.create.EaaS === 'string' ? arc.create.EaaS.trim() !== '' : arc.create.EaaS.text && arc.create.EaaS.text.trim() !== '')
-                    if (!hasContent) {
-                      if (onTileClick) {
-                        onTileClick({
-                          type: 'lab',
-                          id: 'EaaS',
-                          hasLink: true,
-                          link: '/ecosystem-as-service'
-                        })
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {renderCellContent(arc.create.VB, categoryData.categoryName, arc.arcName, 'VB')}
+                  </div>
+                  <div
+                    className={`matrix-cell matrix-data-cell matrix-create-cell ${highlightMode === 'projects' ? 'highlight-orange' : ''}`}
+                    onClick={() => {
+                      const hasContent = arc.create.EaaS && (typeof arc.create.EaaS === 'string' ? arc.create.EaaS.trim() !== '' : arc.create.EaaS.text && arc.create.EaaS.text.trim() !== '')
+                      if (!hasContent && onTileClick) {
+                        onTileClick({ type: 'lab', id: 'EaaS', hasLink: true, link: '/ecosystem-as-service' })
                       }
-                    }
-                  }}
-                  style={{ cursor: 'pointer' }}
-                >
-                  {renderCellContent(arc.create.EaaS, categoryData.category, arc.arcName, 'EaaS')}
-                </div>
-                <div 
-                  className="matrix-cell matrix-data-cell matrix-create-cell"
-                  onClick={(e) => {
-                    const hasContent = arc.create.SIE && (typeof arc.create.SIE === 'string' ? arc.create.SIE.trim() !== '' : arc.create.SIE.text && arc.create.SIE.text.trim() !== '')
-                    if (!hasContent) {
-                      if (onTileClick) {
-                        onTileClick({
-                          type: 'lab',
-                          id: 'SIE',
-                          hasLink: false
-                        })
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {renderCellContent(arc.create.EaaS, categoryData.categoryName, arc.arcName, 'EaaS')}
+                  </div>
+                  <div
+                    className={`matrix-cell matrix-data-cell matrix-create-cell ${highlightMode === 'projects' ? 'highlight-orange' : ''}`}
+                    onClick={() => {
+                      const hasContent = arc.create.SIE && (typeof arc.create.SIE === 'string' ? arc.create.SIE.trim() !== '' : arc.create.SIE.text && arc.create.SIE.text.trim() !== '')
+                      if (!hasContent && onTileClick) {
+                        onTileClick({ type: 'lab', id: 'SIE', hasLink: true, link: '/system-innovation-engine' })
                       }
-                    }
-                  }}
-                  style={{ cursor: 'pointer' }}
-                >
-                  {renderCellContent(arc.create.SIE, categoryData.category, arc.arcName, 'SIE')}
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {renderCellContent(arc.create.SIE, categoryData.categoryName, arc.arcName, 'SIE')}
+                  </div>
                 </div>
-              </div>
               )
             })}
           </div>

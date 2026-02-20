@@ -3,125 +3,53 @@
   min-height: 100vh;
   background-color: #111112;
   position: relative;
-}
-
-.matrix-section-header {
-  padding: 2rem;
-  text-align: center;
-}
-
-.matrix-section-title {
-  font-size: 2rem;
-  color: #A8A8A8;
-  font-weight: 400;
-  margin: 0;
-}
-
-.matrix-section-container {
-  height: 300vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.matrix-section-content {
-  position: relative;
-  width: 100%;
-  min-height: 300vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2rem;
-}
-
-.matrix-visualization-area {
-  position: sticky;
-  top: 0;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 420px;
-  width: 80vw;
-  max-width: 80vw;
-  perspective: 1000px;
-  z-index: 1;
+}
+
+.matrix-section-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 2rem 2rem;
+}
+
+.matrix-visualization-area {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 auto;
 }
 
 .matrix-visualization-wrapper {
   position: relative;
-  width: 80vw;
-  height: 80vh;
-  max-width: 80vw;
-  max-height: 80vh;
+  width: auto;
+  height: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  overflow: visible;
-}
-
-.matrix-main-views {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.matrix-2x3-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-  pointer-events: none;
-}
-
-.matrix-2x3-overlay > * {
-  pointer-events: auto;
+  justify-content: flex-start;
 }
 
 @media (max-width: 1024px) {
   .matrix-visualization-area {
-    margin-left: 0;
     max-width: 100%;
     padding: 1rem;
   }
-  
+
   .matrix-section-content {
     padding: 1rem;
   }
 }
 
 @media (max-width: 768px) {
-  .matrix-section-title {
-    font-size: 1.5rem;
-  }
-  
-  .matrix-section-container {
-    height: auto;
-  }
-  
-  .matrix-section-content {
+  .matrix-section {
     min-height: auto;
   }
-  
-  .matrix-visualization-area {
-    position: relative;
-    height: auto;
-    min-height: 50vh;
+
+  .matrix-section-content {
+    flex-direction: column;
   }
 }

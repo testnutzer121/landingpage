@@ -20,7 +20,7 @@ const LandingPage = () => {
       <nav className="landing-nav">
         <div className="nav-content">
           <a 
-            href="https://project-change-log-t-fxu5.bolt.host/changelog" 
+            href="https://changelog.humansys.xyz/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="nav-link"
@@ -38,21 +38,129 @@ const LandingPage = () => {
             <h1 className="brand-name">Humansys</h1>
           </div>
           <h2 className="hero-title">Building a better tomorrow through technology</h2>
-          <p className="hero-description">
-            We believe in progress as a route for a better world, and we believe that progress is driven by innovation.
-          </p>
-          <p className="hero-description">
-            We see our mission in building capabilities to solve wicked problems / systemic issues. We believe that solving the problems that stand in our way to solve those problems is done through systemic infrastructure.
-          </p>
-          <p className="hero-description">
-            Our ultimate mission is to create a world of human flourishing. Therefore, we think and create through our labs to achieve our arcs.
-          </p>
+          <div className="hero-description-block">
+            We believe in progress as a route for a better world, and we believe that progress is driven by innovation. We see our mission in building capabilities to solve wicked problems / systemic issues. We believe that solving the problems that stand in our way to solve those problems is done through systemic infrastructure. Our mission is to create a world of human flourishing. Therefore, we think and create through our labs to achieve our arcs.
+          </div>
         </div>
       </section>
 
       {/* Matrix Section */}
       <section className="matrix-section-wrapper" ref={matrixRef}>
         <MatrixSection />
+      </section>
+
+      {/* Contexts Section — two-column layout */}
+      <section className="contexts-section">
+        <div className="section-content two-col-layout">
+          <div className="two-col-left">
+            <h2 className="section-title">Contexts</h2>
+            <p className="section-description">
+              The overarching Synergistic Symbiosis mission asks us to design an ecosystem that can adapt to radically different real-world conditions—while still converging on a coherent trajectory. Rather than treating this as a single "theory of change," the framework assumes continuous iteration: scanning contexts, testing pathways, and tightening the system based on what actually works in practice.
+            </p>
+          </div>
+          <div className="two-col-right">
+            <div className="two-col-subsection">
+              <h3 className="subsection-title">Alliances and Collaborators</h3>
+              <p className="section-description">
+                We look for coalition opportunities across founders, educators, researchers, communities, institutions, and capital. The goal is not "partnerships for optics," but alliances that unlock distribution, trust, legitimacy, and durable support structures for human development systems. Operating in the field of human flourishing allows us to bring together players and individuals from various areas such as economy of wellbeing, mental health, life science, and more.
+              </p>
+            </div>
+
+            <hr className="section-divider" />
+
+            <div className="two-col-subsection">
+              <h3 className="subsection-title">Paradigms</h3>
+              <p className="section-description">
+                We assume many current systems are optimized for metrics that do not serve human flourishing. We explore paradigm shifts such as:
+              </p>
+              <ul className="context-list">
+                <li>From extraction to capability</li>
+                <li>From productivity-only thinking to capability, meaning, and character development</li>
+              </ul>
+              <p className="section-description">
+                Please find a first version of our analysis which led to this claim here:{' '}
+                <a href="https://humansys.substack.com/t/problem-analysis" target="_blank" rel="noopener noreferrer" className="context-link">
+                  humansys.substack.com/t/problem-analysis ↗
+                </a>
+              </p>
+            </div>
+
+            <hr className="section-divider" />
+
+            <div className="two-col-subsection">
+              <h3 className="subsection-title">Systems</h3>
+              <p className="section-description">
+                We build systems to connect talent, ideas, and initiatives within our target themes and support them by our services and products offered through the different organisations.
+              </p>
+              <p className="section-description">
+                For systemic change we proposed a framework — the works on this are supported by our Research Institute and translated into action by our Venture Builder.
+              </p>
+            </div>
+
+            <hr className="section-divider" />
+
+            <div className="two-col-subsection">
+              <h3 className="subsection-title">Money and Value</h3>
+              <p className="section-description">
+                The problem-solving value engine reframes "value" as measurable societal and economic benefit, translating prioritization into incentive signals within the tokenized economy.
+              </p>
+            </div>
+
+            <hr className="section-divider" />
+
+            <div className="two-col-subsection">
+              <h3 className="subsection-title">Technology</h3>
+              <p className="section-description">
+                Technology can become manipulation, proxy takeover, and metric tyranny. We treat technology as execution and learning scaffolding with hard boundaries of permissible influence, designed to be anti-Goodhart and pro-autonomy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Acknowledgements Section — two-column layout */}
+      <section className="acknowledgements-section">
+        <div className="section-content two-col-layout">
+          <div className="two-col-left">
+            <h2 className="section-title">Acknowledgements</h2>
+          </div>
+          <div className="two-col-right">
+            <p className="section-description">
+              As we begin our journey to ramp up the visibility and access to our lead organisations — Humansys Venture Builder and Humansys Meta Institute — and prepare our first public presentation at Human Tech Week SF, we would like to acknowledge the limited results and progress made within each organisation, as well as the drafted nature some writings and documents may have. Additionally, please excuse the usage of ambitious terms like "venture builder" and "research institute" as they are currently nothing more than small projects — yet we hope to hold claim to those terms in the future.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Q&A Section — toggles */}
+      <section className="qa-section">
+        <div className="section-content centered-content">
+          <h2 className="section-title">Q&A</h2>
+          <div className="qa-toggles">
+            <details className="qa-toggle">
+              <summary className="qa-toggle-question">What problem do we solve?</summary>
+              <p className="qa-toggle-answer">
+                Before we solve problems we need to understand them — yet most problem fields we are looking into are around the key themes of human flourishing, innovation, and systemic infrastructure. We document our insights and progress on our{' '}
+                <a href="https://humansys.substack.com/" target="_blank" rel="noopener noreferrer" className="context-link">Research Institute ↗</a>
+                {' '}and{' '}
+                <a href="https://humansys.substack.com" target="_blank" rel="noopener noreferrer" className="context-link">humansys.substack ↗</a>.
+              </p>
+            </details>
+            <details className="qa-toggle">
+              <summary className="qa-toggle-question">What do we currently offer?</summary>
+              <p className="qa-toggle-answer">
+                Please find more under:{' '}
+                <a href="https://venturebuilder.humansys.xyz/" target="_blank" rel="noopener noreferrer" className="context-link">Venture Builder Website ↗</a>
+              </p>
+            </details>
+            <details className="qa-toggle">
+              <summary className="qa-toggle-question">Why do we do that?</summary>
+              <p className="qa-toggle-answer">
+                Because we care about Innovation, Human Flourishing, and Systemic Infrastructure — to work for the individual.
+              </p>
+            </details>
+          </div>
+        </div>
       </section>
 
       {/* Hidden Sections - Paradigms to Beyond Monetary Capital */}

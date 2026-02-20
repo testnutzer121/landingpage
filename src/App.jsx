@@ -8,6 +8,7 @@ const EcosystemAsServicePage = React.lazy(() => import('./pages/EcosystemAsServi
 const ResearchPage = React.lazy(() => import('./pages/Research System/ResearchPage.tsx'))
 const PublicationsPage = React.lazy(() => import('./pages/Research System/PublicationsPage.tsx'))
 const ResearchHowWeWorkPage = React.lazy(() => import('./pages/Research System/ResearchHowWeWorkPage.tsx'))
+const SystemInnovationPage = React.lazy(() => import('./pages/SystemInnovationPage.tsx'))
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/ecosystem-as-service" element={<EcosystemAsServicePage />} />
+            <Route path="/system-innovation-engine" element={<SystemInnovationPage />} />
             <Route path="/research" element={<ResearchPage />} />
             <Route path="/resources/research/publications" element={<PublicationsPage />} />
             <Route path="/resources/research/how-we-work" element={<ResearchHowWeWorkPage />} />

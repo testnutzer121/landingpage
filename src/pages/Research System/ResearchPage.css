@@ -1,8 +1,38 @@
-/* Research Page Styles */
+/* Research Page Styles - palette: bg #0D131D, text #ECF6F6 */
 .research-page {
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #f5f5f5, #ffffff);
+  background-color: #0D131D;
   animation: fadeIn 0.5s ease-in;
+}
+
+.research-page .btn-primary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #ECF6F6;
+  color: #0D131D;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.research-page .btn-primary:hover {
+  opacity: 0.9;
+}
+
+.research-page .btn-secondary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: #ECF6F6;
+  border: 2px solid #1e2a3a;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.research-page .btn-secondary:hover {
+  background-color: #151d2b;
+  border-color: #ECF6F6;
 }
 
 @keyframes fadeIn {

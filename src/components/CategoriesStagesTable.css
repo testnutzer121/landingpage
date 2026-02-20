@@ -1,0 +1,128 @@
+.categories-stages-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #111112;
+}
+
+.categories-stages-container > .categories-stages-table {
+  margin: 0 auto;
+}
+
+.categories-stages-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
+  margin: 0 auto;
+}
+
+.categories-stages-header-row,
+.categories-stages-data-row {
+  display: grid;
+  grid-template-columns: 300px 250px 250px;
+  gap: 2px;
+}
+
+.categories-stages-cell {
+  border: 1px solid #333;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  background-color: #212121;
+  color: #A8A8A8;
+  transition: all 0.2s;
+  min-height: 120px;
+}
+
+.categories-stages-header-cell {
+  background-color: rgb(41, 41, 41);
+  color: #A8A8A8;
+  font-weight: 500;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  min-height: auto;
+}
+
+.categories-stages-corner-header {
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.categories-stages-stage-header {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.categories-stages-stage-header:hover {
+  background-color: #2a2a2a;
+}
+
+.categories-stages-category-cell {
+  background-color: rgb(41, 41, 41);
+  font-weight: 500;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.categories-stages-category-cell:hover {
+  background-color: #2a2a2a;
+}
+
+.categories-stages-data-cell {
+  background-color: #212121;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  position: relative;
+  height: 100%;
+}
+
+@media (max-width: 1200px) {
+  .categories-stages-header-row,
+  .categories-stages-data-row {
+    grid-template-columns: 250px 200px 200px;
+  }
+
+  .categories-stages-cell {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .categories-stages-container {
+    padding: 1rem;
+  }
+
+  .categories-stages-header-row,
+  .categories-stages-data-row {
+    grid-template-columns: 150px 120px 120px;
+    font-size: 0.8rem;
+  }
+
+  .categories-stages-cell {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    min-height: 100px;
+  }
+}

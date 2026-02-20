@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { 
   FileText, 
@@ -299,12 +300,12 @@ const PublicationsPage = () => {
               Get notified about new publications and research findings as they become available.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/resources/research"
+              <Link
+                to="/research"
                 className="btn-primary"
               >
                 View Research
-              </a>
+              </Link>
               <a
                 href="/resources/community"
                 className="btn-secondary"

@@ -1,29 +1,20 @@
 .side-panel {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 400px;
-  max-width: 30vw;
-  padding: 2rem;
-  z-index: 10;
-  pointer-events: none;
-  height: 100vh;
-  overflow-y: auto;
+  width: 320px;
+  min-width: 280px;
+  flex: 0 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .side-panel-content {
   transition: opacity 0.3s ease-out;
 }
 
-.side-panel-next {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-}
-
 .side-panel-title {
   font-size: 1.5rem;
-  color: #A8A8A8;
+  color: #ffffff;
   margin-bottom: 1rem;
   font-weight: 400;
 }
@@ -32,17 +23,34 @@
   font-size: 1rem;
   line-height: 1.6;
   color: #A8A8A8;
-  max-width: 380px;
+  max-width: 340px;
+}
+
+.side-panel-continue {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  background: transparent;
+  color: #A8A8A8;
+  border: 1px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.side-panel-continue:hover {
+  color: #fff;
+  border-color: #E87A2E;
 }
 
 @media (max-width: 768px) {
   .side-panel {
-    position: relative;
     width: 100%;
+    min-width: 0;
     max-width: 100%;
     padding: 1rem;
   }
-  
+
   .side-panel-description {
     max-width: 100%;
   }

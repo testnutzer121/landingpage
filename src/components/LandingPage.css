@@ -42,11 +42,11 @@
 
 /* Hero Section */
 .hero-section {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
+  padding: 6rem 2rem 1.5rem;
   position: relative;
 }
 
@@ -83,8 +83,17 @@
   font-weight: 300;
   line-height: 1.2;
   color: #ffffff;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
+}
+
+.hero-description-block {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #A8A8A8;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
 }
 
 .hero-description {
@@ -160,10 +169,169 @@
   max-width: 1000px;
 }
 
-/* Matrix Section Wrapper */
+/* Matrix Section Wrapper — closer to hero text */
 .matrix-section-wrapper {
   width: 100%;
   padding: 0;
+  margin-top: -0.5rem;
+}
+
+/* Centered content layout */
+.centered-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Two-column layout (reference image style) — aligned with matrix area */
+.two-col-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  max-width: 1412px;
+  margin: 0 auto;
+}
+
+.two-col-left {
+  flex: 0 0 320px;
+}
+
+.two-col-left .section-title {
+  margin-bottom: 1.5rem;
+}
+
+.two-col-left .section-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.two-col-right {
+  flex: 1;
+  min-width: 0;
+}
+
+.two-col-subsection {
+  padding: 0;
+}
+
+/* Contexts Section */
+.contexts-section {
+  padding: 6rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 3rem 0;
+}
+
+.subsection-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.context-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.context-list li {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #A8A8A8;
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.context-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #555;
+}
+
+.context-link {
+  color: #ccc;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.context-link:hover {
+  color: #fff;
+  border-color: #E87A2E;
+}
+
+/* Acknowledgements Section */
+.acknowledgements-section {
+  padding: 6rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Q&A Section */
+.qa-section {
+  padding: 6rem 2rem 8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.qa-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.qa-toggle {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.qa-toggle:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.qa-toggle-question {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.qa-toggle-question::-webkit-details-marker {
+  display: none;
+}
+
+.qa-toggle-question::after {
+  content: '+';
+  font-size: 1.25rem;
+  color: #666;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.qa-toggle[open] .qa-toggle-question::after {
+  content: '−';
+}
+
+.qa-toggle-question:hover {
+  color: #ccc;
+}
+
+.qa-toggle-answer {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #A8A8A8;
+  padding: 0 0 1.5rem 0;
 }
 
 /* Paradigms Section */
@@ -296,13 +464,32 @@
 }
 
 /* Responsive Design */
+@media (max-width: 768px) {
+  .two-col-layout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .two-col-left {
+    flex: none;
+    width: 100%;
+  }
+}
+
 @media (min-width: 768px) {
   .hero-section,
   .economic-options-section,
+  .contexts-section,
+  .acknowledgements-section,
+  .qa-section,
   .paradigms-section,
   .philosophies-section,
   .shifts-section {
     padding: 6rem 3rem;
+  }
+
+  .qa-section {
+    padding-bottom: 8rem;
   }
 
   .paradigm-items,
@@ -331,3 +518,4 @@
     max-width: 1400px;
   }
 }
+

@@ -60,8 +60,15 @@ const TileModal = ({ tileData, onClose }) => {
     case 'arcs-labs':
       title = tileData.title || tileData.arcName || 'Arcs/Labs'
       abbreviation = tileData.arcId || ''
-      description = ''
-      // This will be handled specially in the render section
+      // If we have an arcId, show the real ARC description
+      if (tileData.arcId) {
+        const arcInfo = getArcById(tileData.arcId)
+        if (arcInfo) {
+          title = arcInfo.name
+          abbreviation = arcInfo.abbreviation
+          description = arcInfo.description
+        }
+      }
       break
     case 'arc':
       // Try to get arc by id first, then by name if id not found
@@ -78,10 +85,6 @@ const TileModal = ({ tileData, onClose }) => {
         title = arc.name
         abbreviation = arc.abbreviation
         description = arc.description
-        const studio = getStudioById(arc.studioId)
-        if (studio) {
-          additionalInfo = { label: 'Studio', value: studio.name }
-        }
       }
       break
     case 'lab':
@@ -90,7 +93,7 @@ const TileModal = ({ tileData, onClose }) => {
         title = lab.name
         abbreviation = lab.abbreviation
         description = lab.description
-        additionalInfo = { label: 'Overcategory', value: lab.overcategory }
+        // Overcategory removed from display
         // Get link from tileData if provided
         if (tileData.hasLink && tileData.link) {
           hasLink = true
@@ -133,11 +136,12 @@ const TileModal = ({ tileData, onClose }) => {
       title = projectInfo.title || tileData.content || 'Project'
       abbreviation = tileData.labId || ''
       description = projectInfo.description || `Project: ${tileData.content}`
-      if (tileData.arcName) {
-        description += `\n\nPart of ARC: ${tileData.arcName}`
-      }
-      if (tileData.category) {
-        description += `\n\nCategory: ${tileData.category}`
+      if (tileData.arcName && tileData.categoryName) {
+        description += `\nARC: ${tileData.arcName} · Category: ${tileData.categoryName}`
+      } else if (tileData.arcName) {
+        description += `\nARC: ${tileData.arcName}`
+      } else if (tileData.categoryName) {
+        description += `\nCategory: ${tileData.categoryName}`
       }
       // Use link from projectInfo or tileData
       if (projectInfo.link && projectInfo.link !== 'get url' && projectInfo.link !== 'research page') {
@@ -213,7 +217,7 @@ const TileModal = ({ tileData, onClose }) => {
             </div>
           )}
           <div className="tile-modal-description">
-            {type === 'arcs-labs' ? (
+            {type === 'arcs-labs' && !description ? (
               <div>
                 <div style={{ marginBottom: '2rem' }}>
                   <h3 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '1rem' }}>Arcs</h3>
